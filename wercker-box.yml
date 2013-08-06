@@ -11,4 +11,4 @@ script: |-
   sudo apt-get remove --purge -y openjdk-6-jre
   
   # Assert that java is not available anymore
-  type foo >/dev/null 2>&1 && { echo >&2 "I expected java to be not available. Aborting."; exit 1; }
+  type foo >/dev/null 2>&1 && { echo "I expected java to be not available. Aborting."; exit 1; }
