@@ -1,6 +1,6 @@
 name: java
 version: 0.0.1-dev
-inherits: wercker/wercker/ubuntu12.04-webessentials@0.0.5
+inherits: wercker/ubuntu12.04-webessentials@0.0.5
 type: main
 platform: ubuntu@12.04
 description: Wercker box for Java development
