@@ -33,3 +33,8 @@ script: |-
   # We should have ant and ivy available
   type ant || echo "I expected ant to be available. Aborting."; exit 1;
   type ivy || echo "I expected ivy to be available. Aborting."; exit 1;
+
+  # Install maven
+  sudo apt-get install maven -y -qq
+  
+  type mvn || echo "I expected maven to be available. Aborting."; exit 1;
