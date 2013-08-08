@@ -11,4 +11,18 @@ script: |-
   sudo apt-get remove --purge -y openjdk-6-jre
   
   # Assert that java is not available anymore
-  type java >/dev/null 2>&1 || { echo "I expected java to be not available. Aborting."; exit 1; }
+  if [ type java ]; then echo "I expected java to be not available. Aborting."; exit 1; fi
+
+  # Add webupd8 team repository that contains the 3 major oracle-java versions
+  sudo add-apt-repository ppa:webupd8team/java -y
+  sudo apt-get update
+
+  # Accept the oracle license
+  echo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+  echo debconf shared/accepted-oracle-license-v1-1 seen true |  sudo debconf-set-selections
+  
+  # Install oracle-java7
+  sudo apt-get install oracle-java7-installer -qq
+  
+  # We should have java again
+  if [ ! type java ]; then echo "I expected java to be available after oracle-java7-installer installation. Aborting."; exit 1; fi
