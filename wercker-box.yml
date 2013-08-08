@@ -11,7 +11,7 @@ script: |-
   sudo apt-get remove --purge -y openjdk-6-jre
   
   # Assert that java is not available anymore
-  if [ type java ]; then echo "I expected java to be not available. Aborting."; exit 1; fi
+  type java && echo "I expected java to be not available. Aborting."; exit 1;
 
   # Add webupd8 team repository that contains the 3 major oracle-java versions
   sudo add-apt-repository ppa:webupd8team/java -y -qq
@@ -25,11 +25,11 @@ script: |-
   sudo apt-get install oracle-java7-installer -y -qq
   
   # We should have java again
-  if [ ! type java ]; then echo "I expected java to be available after oracle-java7-installer installation. Aborting."; exit 1; fi
+  type java || echo "I expected java to be available after oracle-java7-installer installation. Aborting."; exit 1;
 
   # Install ant
   sudo apt-get install ant ant-contrib ivy -y -qq
   
   # We should have ant and ivy available
-  if [ ! type ant ]; then echo "I expected ant to be available. Aborting."; exit 1; fi
-  if [ ! type ivy ]; then echo "I expected ivy to be available. Aborting."; exit 1; fi
+  type ant || echo "I expected ant to be available. Aborting."; exit 1;
+  type ivy || echo "I expected ivy to be available. Aborting."; exit 1;
