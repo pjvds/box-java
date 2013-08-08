@@ -1,5 +1,5 @@
 name: java
-version: 0.0.1-dev
+version: 0.0.1.1-dev
 inherits: wercker/ubuntu12.04-webessentials@0.0.5
 type: main
 platform: ubuntu@12.04
