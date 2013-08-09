@@ -28,11 +28,10 @@ script: |-
   type java || { echo "I expected java to be available after oracle-java7-installer installation. Aborting."; exit 1; }
 
   # Install ant
-  sudo apt-get install ant ant-contrib ivy -y -qq
+  sudo apt-get install ant ant-contrib ivy ivy-doc -y -qq
   
   # We should have ant and ivy available
   type ant || { echo "I expected ant to be available. Aborting."; exit 1; }
-  type ivy || { echo "I expected ivy to be available. Aborting."; exit 1; }
 
   # Install maven
   sudo apt-get install maven -y -qq
